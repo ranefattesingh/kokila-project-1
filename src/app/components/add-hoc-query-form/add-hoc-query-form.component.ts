@@ -26,10 +26,7 @@ export class AddHocQueryFormComponent implements OnInit {
           columnNames: new FormArray([])
         }),
         conditionView: this.formBuilder.group({
-          logicals: new FormArray([]),
-          columnNames: new FormArray([]),
-          arithmetics: new FormArray([]),
-          columnValues: new FormArray([]),
+          conditions: new FormArray<FormGroup>([]),
         })
       })
     }
@@ -69,8 +66,8 @@ export class AddHocQueryFormComponent implements OnInit {
     return this.getResultView().get("columnNames") as FormArray
   }
 
-  getConditionViewColumnNames():FormArray{
-    return this.getConditionView().get("columnNames") as FormArray
+  getConditionList():FormArray{
+    return this.getConditionView().get("conditions") as FormArray
   }
 
   onSelectReport(item: ReportItem){
@@ -82,8 +79,11 @@ export class AddHocQueryFormComponent implements OnInit {
     const viewListColumnNames = this.getResultViewList()
     viewListColumnNames.push(new FormControl(item))
     
-    const conditionViewColumnNames = this.getConditionViewColumnNames()
-    conditionViewColumnNames.push(new FormControl(item))
+    const conditionList = this.getConditionList()
+    conditionList.controls.forEach(conditon => {
+      const columnNames = conditon.get("columnNames") as FormArray
+      columnNames.push(new FormControl(item))
+    })
 
     const selectViewListColumnNames = this.getSelectViewColumnNames()
     const index = selectViewListColumnNames.controls.findIndex(x => x.value == item)
@@ -102,10 +102,13 @@ export class AddHocQueryFormComponent implements OnInit {
       viewListColumnNames.removeAt(viewListColumnNameIndex)
     }
 
-    const conditionViewColumnNames = this.getConditionViewColumnNames()
-    const conditionViewColumnNameIndex = conditionViewColumnNames.controls.findIndex(x => x.value == item)
-    if(conditionViewColumnNameIndex != -1) {
-      conditionViewColumnNames.removeAt(conditionViewColumnNameIndex)
-    }
+    const conditionList = this.getConditionList()
+    conditionList.controls.forEach(conditon => {
+      const columnNames = conditon.get("columnNames") as FormArray
+      const columnNameIndex = columnNames.controls.findIndex(x => x.value == item)
+      if(columnNameIndex != -1) {
+        columnNames.removeAt(columnNameIndex)
+      }
+    })
   }
 }

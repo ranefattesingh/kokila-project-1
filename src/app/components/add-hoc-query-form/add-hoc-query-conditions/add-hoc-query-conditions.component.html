@@ -5,10 +5,10 @@
                 <h2>Condition</h2>
             </div>
             <div>
-                <button>+ Add Conditions</button>
+                <button (click)="omAddNewConditionRowClick()">+ Add Conditions</button>
             </div>
         </div>
-        <div>
+        <div *ngFor="let condition of getConditions().controls; let conditionIndex = index">
             <!-- logical -->
             <div>
                 <mat-form-field appeareance="outline">
@@ -22,7 +22,7 @@
             <div>
                 <mat-form-field appeareance="outline">
                     <mat-select matNativeControl>
-                        <mat-option *ngFor="let item of getConditionViewColumnNames().controls">
+                        <mat-option *ngFor="let item of getConditionColumnNames(conditionIndex).controls">
                             {{item.value.name}}
                         </mat-option>
                     </mat-select>
@@ -48,7 +48,7 @@
             </div>
 
             <div>
-                <mat-icon>delete</mat-icon>
+                <mat-icon (click)="onDeleteConditionRowClick(conditionIndex)">delete</mat-icon>
             </div>
         </div>
     </mat-card>
