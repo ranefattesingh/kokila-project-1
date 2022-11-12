@@ -1,0 +1,20 @@
+<ng-container>
+    <mat-card>
+        <div>
+            <div>
+                <h2>Result Column</h2>
+            </div>
+        </div>
+        <div>
+            <div>
+                <mat-list>
+                    <mat-list-item *ngFor="let item of getResultViewList().controls; let i = index">
+                        <mat-icon (click)="onResultListItemDeleteClick(item.value)">delete</mat-icon>
+                        <h3 matLine>{{item.value.name}}</h3>
+                        <mat-divider></mat-divider>
+                    </mat-list-item>
+                </mat-list>
+            </div>
+        </div>
+    </mat-card>
+</ng-container>

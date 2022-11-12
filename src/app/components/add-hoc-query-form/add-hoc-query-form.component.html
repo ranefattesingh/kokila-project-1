@@ -1,0 +1,49 @@
+<ng-container>
+    <!-- query select component -->
+    <div>
+        <div>
+            <app-add-hoc-query-select 
+            [selectView]="queryForm.controls.selectView"
+            (selectedReportItemEventEmitter)="onSelectReport($event)"
+            (viewListItemClickEventEmitter)="onViewListItemAddClick($event)"
+            ></app-add-hoc-query-select>
+        </div>
+    </div>
+
+    <!-- save, clear and execute button -->
+    <div>
+        <div>
+            <div>
+                <ng-container>
+                    <mat-card>
+                        <div>
+                            <div>
+                                <button>Save Query</button>
+                                <button>Clear Query</button>
+                            </div>
+
+                            <div></div>
+
+                            <div>
+                                <button>Execute</button>
+                            </div>
+                        </div>
+                    </mat-card>
+                </ng-container>
+            </div>
+
+            <!-- selected column component -->
+            <div>
+                <app-add-hoc-query-selected-columns 
+                [resultView]="queryForm.controls.resultView"
+                (resultListItemClickEventEmitter)="onResultListItemDeleteClick($event)"
+                ></app-add-hoc-query-selected-columns>
+            </div>
+
+            <!-- conditions component -->
+            <div>
+                <app-add-hoc-query-conditions [conditionView]="queryForm.controls.conditionView"></app-add-hoc-query-conditions>
+            </div>
+        </div>
+    </div>
+</ng-container>

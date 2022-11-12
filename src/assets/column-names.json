@@ -1,0 +1,31 @@
+{
+    "result":{
+        "data":[
+            {
+                "name": "column name 1"
+            },
+            {
+                "name": "column name 2"
+            },
+            {
+                "name": "column name 3"
+            },
+            {
+                "name": "column name 4"
+            },
+            {
+                "name": "column name 5"
+            },
+            {
+                "name": "column name 6"
+            },
+            {
+                "name": "column name 7"
+            },
+            {
+                "name": "column name 8"
+            }
+        ],
+        "total": 8
+    }
+}

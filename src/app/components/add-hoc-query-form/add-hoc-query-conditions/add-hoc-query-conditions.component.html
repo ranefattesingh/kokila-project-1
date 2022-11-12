@@ -1,0 +1,55 @@
+<ng-container>
+    <mat-card>
+        <div>
+            <div>
+                <h2>Condition</h2>
+            </div>
+            <div>
+                <button>+ Add Conditions</button>
+            </div>
+        </div>
+        <div>
+            <!-- logical -->
+            <div>
+                <mat-form-field appeareance="outline">
+                    <mat-select matNativeControl>
+                        <mat-option></mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <!-- column name -->
+            <div>
+                <mat-form-field appeareance="outline">
+                    <mat-select matNativeControl>
+                        <mat-option *ngFor="let item of getConditionViewColumnNames().controls">
+                            {{item.value.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <!-- arithmatic -->
+            <div>
+                <mat-form-field appeareance="outline">
+                    <mat-select matNativeControl>
+                        <mat-option></mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <!-- column value -->
+            <div>
+                <mat-form-field appeareance="outline">
+                    <mat-select matNativeControl>
+                        <mat-option></mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-icon>delete</mat-icon>
+            </div>
+        </div>
+    </mat-card>
+</ng-container>
